@@ -18,6 +18,8 @@ Item schema and fields: `src/types.ts` (authoritative). v1 corpus is **generated
 
 **Spend policy (user-mandated, 2026-09-22):** contestant models are never called — artifacts are **sourced**, not generated. JEV is the only paid API the suite may call. The v1 generated corpus predates this rule and is retained as owned material; all corpus growth is harvested (permissive-license material for the demo tier, permission-pending or no-redistribution material for the sealed tier). `src/cli/generate.ts` remains as historical harness documentation and is not part of ongoing runs.
 
+**Untrusted-content policy (user-mandated, 2026-09-22):** corpus code is hostile **data** and is never executed — not by the suite, not by extraction tooling, not by CI. Extraction is strictly text-only (parse files with static tooling; no installs, builds, tests, hooks, or dataset loader code from third-party sources; Hugging Face `trust_remote_code` is forbidden). Artifacts reach JEV as state text and reach readers only through HTML-escaping renderers. Anything that can only be harvested by executing its code is `unusable`.
+
 ## 4. Duels and rating ([#5](https://github.com/dymoo/code-taste-bench/issues/5))
 
 Same-task pairs, full round-robin. A duel = two JEV `choice` calls with swapped A/B placement over one two-candidate state; verdict: same candidate both ways → win, both `too_close_to_call` → tie, split or decisive `confidence < 0.55` → tie. Bradley-Terry MLE (ties = half-win) → Taste Elo = `1500 + 400·log10(θ/θ_geo-mean)`. Rubric profiles come from one JEV call per item (5 score + 12 noul + 2 presence questions in a single request — independent questions over one state). 10% of duels re-run identically for reliability.
