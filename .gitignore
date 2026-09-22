@@ -1,0 +1,7 @@
+node_modules/
+site/dist/
+.DS_Store
+
+# Rating sheets and unblinding keys contain sealed item material (SPEC section 6).
+# They are custody-controlled artifacts and must never enter public history.
+ratings/
