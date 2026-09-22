@@ -76,9 +76,12 @@ export type SlopId =
 
 // JEV Decisions API (POST https://openrouter.ai/api/alpha/decisions)
 
+// Wire shapes verified live against /api/alpha/decisions: `score` accepts an ordered
+// string[] of level descriptions; `choice` REQUIRES a record { optionKey: description }
+// (arrays are rejected with `expected record`); `noul` takes no criteria.
 export type Question =
   | { type: "noul"; instructions: string }
-  | { type: "choice"; instructions: string; criteria: string[] }
+  | { type: "choice"; instructions: string; criteria: Record<string, string> }
   | { type: "score"; instructions: string; criteria: string[] };
 
 export type Questions = Record<string, Question>;
@@ -117,7 +120,7 @@ export interface ItemProfile {
   has_explanation: NoulAnswer;
   has_tests: NoulAnswer;
   slop: Record<SlopId, NoulAnswer>;
-  composite: number;
+  composite: number; // mean of answered dimension scores on the 0..4 level scale (published as composite/4)
   calls: JudgeCall[];
 }
 

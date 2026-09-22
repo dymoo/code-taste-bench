@@ -83,9 +83,13 @@
     "silencing_tells": { "question_type": "noul", "instructions": "`artifact` silences tooling instead of fixing defects: suppression comments, `@ts-nocheck`, constant-condition dead branches, or rewrites that clear a warning while preserving the defect." }
   },
   "duel_instructions": "Two candidate implementations of the same task are shown as `candidate_a` and `candidate_b`. Which has better taste as defined here: clarity & structure, idiom & economy, signal discipline, communication (their accompanying explanation), and test taste. Judge taste only — never feature count, never mere correctness. Pick `candidate_a`, `candidate_b`, or `too_close_to_call` when their taste is indistinguishable.",
-  "duel_criteria": ["candidate_a", "candidate_b", "too_close_to_call"],
+  "duel_criteria": {
+    "candidate_a": "The candidate shown as `candidate_a` has better taste.",
+    "candidate_b": "The candidate shown as `candidate_b` has better taste.",
+    "too_close_to_call": "The two candidates' taste is indistinguishable."
+  },
   "notes": {
     "contested_patterns": "Conditional empty-object spread, TODO severity, JSDoc density, and boundary widening are contested across rulebases (research/slop-patterns.md); they are judged through the level descriptions above and never auto-flagged.",
-    "composite": "composite = mean of available dimension scores (0..1); publish as percentage. Dimensions gated by has_explanation / task.tests_expected are excluded and the mean renormalizes."
+    "composite": "composite = mean of available dimension scores on the 0..4 level scale (JEV returns the expected level index); publish as percentage = composite/4. Dimensions gated by has_explanation / task.tests_expected are excluded and the mean renormalizes."
   }
 }
