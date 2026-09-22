@@ -1,0 +1,91 @@
+{
+  "version": "rubric-v1",
+  "judge_model": "typesafe/jev-1.13",
+  "taste_definition": "Taste is the quality of a code artifact judged on its code, its communication, and its test writing — beyond whether it works. Judge taste only: never feature count, never mere correctness.",
+  "dimensions": {
+    "clarity": {
+      "label": "Clarity & structure",
+      "question_type": "score",
+      "instructions": "How clearly do `artifact`'s names, decomposition, and control flow convey what the code does and why? Judge the code in `artifact` against `task.brief`.",
+      "levels": [
+        "Misleading — names or structure obscure or invert what the code does",
+        "Opaque — decipherable only by tracing execution line by line",
+        "Understandable — conventional layout and mostly clear names, with some puzzling spots",
+        "Clear — reads at the level of the idea; intent obvious from names and shape",
+        "Exemplary — the structure itself explains the domain; a newcomer learns the model from the code"
+      ]
+    },
+    "idiom": {
+      "label": "Idiom & economy",
+      "question_type": "score",
+      "instructions": "How well does `artifact` use the language's idioms at the right size — no redundant machinery (thin wrappers, needless copies, hand-rolled library work, premature abstraction)?",
+      "levels": [
+        "Fights the language — hand-rolls what the platform provides, or abuses its constructs",
+        "Wasteful — noticeable redundant machinery: thin wrappers, needless copies, abstraction that earns nothing",
+        "Competent — idiomatic baseline with a few needless parts",
+        "Lean — every construct earns its place; the deletion test passes",
+        "Fluent — the shortest clear form; idiomatic shortcuts used exactly where they help"
+      ]
+    },
+    "signal": {
+      "label": "Signal discipline",
+      "question_type": "score",
+      "instructions": "Do `artifact`'s comments and cosmetics carry signal? Narration comments, step banners, section dividers, restating comments, emoji, and tutorial voice are slop; why-comments, SAFETY notes, and invariant documentation are signal.",
+      "levels": [
+        "Slop-saturated — narration, banners, emoji, or restating comments dominate",
+        "Noisy — regular slop tells (trivial comments, tutorial voice) with little signal",
+        "Mixed — uneven: some slop, some useful commentary",
+        "Quiet — comments only where they carry why, invariants, or hazards",
+        "Austere — nothing decorative; every comment is load-bearing"
+      ]
+    },
+    "comms": {
+      "label": "Communication",
+      "question_type": "score",
+      "instructions": "How well does `context.explanation` communicate — accurate, concise, honest about tradeoffs and limits? Confusing or padded explanation is poor taste even when the code is fine. Omitted when `has_explanation` is false.",
+      "levels": [
+        "Misleading — contradicts or oversells the code",
+        "Confusing — verbose, hedging, or hard to follow",
+        "Serviceable — correct but padded or generic",
+        "Clear — concise, accurate, states what matters",
+        "Trusted — precise about tradeoffs and limits; you would forward it"
+      ]
+    },
+    "tests": {
+      "label": "Test taste",
+      "question_type": "score",
+      "instructions": "Do `artifact`'s tests earn their place — verify the real contract including failure paths, without scaffolding or mock theater? Missing tests where the task needs them is the floor. Omitted when `task.tests_expected` is false.",
+      "levels": [
+        "Missing where the task needs them, or counterproductive — proves nothing or asserts mock echoes",
+        "Slop-heavy — verbose scaffolding, imprecise matchers, bleeding state",
+        "Present — checks something real but shallow or duplicative",
+        "Earned — verifies the actual contract including failure paths",
+        "Model — minimal, precise, and itself teaches the contract"
+      ]
+    }
+  },
+  "presence": {
+    "has_explanation": { "question_type": "noul", "instructions": "`context.explanation` is present and substantive (not an empty string or a one-line stub)." },
+    "has_tests": { "question_type": "noul", "instructions": "`artifact` contains test code." }
+  },
+  "slop_diagnostics": {
+    "type_laundering": { "question_type": "noul", "instructions": "`artifact` launders types: chained or `as any` assertions, widen-then-assert casts, or fabricated type evidence instead of validation." },
+    "unvalidated_boundary": { "question_type": "noul", "instructions": "`artifact` treats unvalidated boundary data (raw `JSON.parse` results, external input) as typed or trusted." },
+    "accumulating_copy": { "question_type": "noul", "instructions": "`artifact` grows collections by copying: accumulating spread in reducers/loops, `Object.assign({}, acc, …)`, `concat`/`slice` accumulator chains." },
+    "eager_pipeline": { "question_type": "noul", "instructions": "`artifact` allocates needless intermediates in pipelines, e.g. adjacent eager `.filter().map()` chains where one pass or a lazy pipeline fits." },
+    "comment_slop": { "question_type": "noul", "instructions": "`artifact` carries comment slop: narrative, trivial, step-banner, divider, or placeholder comments that restate or perform rather than explain." },
+    "emoji_marketing": { "question_type": "noul", "instructions": "`artifact` or its output strings use emoji narration or marketing tone." },
+    "inflated_prose": { "question_type": "noul", "instructions": "`artifact`'s comments or docs use inflated vocabulary or em-dash affectation instead of plain engineering language." },
+    "swallowed_errors": { "question_type": "noul", "instructions": "`artifact` swallows failures: empty or comment-only handlers, `except: pass`, catch-and-return-fallback that changes the failure path silently." },
+    "placeholder_residue": { "question_type": "noul", "instructions": "`artifact` leaves residue: orphan TODOs, empty functions, console leftovers, dead or unreachable code from discarded approaches." },
+    "ceremony_structure": { "question_type": "noul", "instructions": "`artifact` builds ceremony: thin wrappers, single-use helpers, static-only classes, factories for one use case — abstraction that deletes nothing." },
+    "self_proving_tests": { "question_type": "noul", "instructions": "`artifact`'s tests prove nothing: they mock the code's own internals, assert mock echoes, or only exercise the happy path while claiming coverage." },
+    "silencing_tells": { "question_type": "noul", "instructions": "`artifact` silences tooling instead of fixing defects: suppression comments, `@ts-nocheck`, constant-condition dead branches, or rewrites that clear a warning while preserving the defect." }
+  },
+  "duel_instructions": "Two candidate implementations of the same task are shown as `candidate_a` and `candidate_b`. Which has better taste as defined here: clarity & structure, idiom & economy, signal discipline, communication (their accompanying explanation), and test taste. Judge taste only — never feature count, never mere correctness. Pick `candidate_a`, `candidate_b`, or `too_close_to_call` when their taste is indistinguishable.",
+  "duel_criteria": ["candidate_a", "candidate_b", "too_close_to_call"],
+  "notes": {
+    "contested_patterns": "Conditional empty-object spread, TODO severity, JSDoc density, and boundary widening are contested across rulebases (research/slop-patterns.md); they are judged through the level descriptions above and never auto-flagged.",
+    "composite": "composite = mean of available dimension scores (0..1); publish as percentage. Dimensions gated by has_explanation / task.tests_expected are excluded and the mean renormalizes."
+  }
+}

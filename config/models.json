@@ -1,0 +1,11 @@
+{
+  "selection_criteria": "Current general-coding flagships from distinct labs, served over OpenRouter chat completions; no :batch variants, no ~ moving aliases (pinned like the judge). Selected 2026-09-22 from the live /api/v1/models catalog.",
+  "models": [
+    { "model": "openai/gpt-6-astra", "model_label": "GPT-6 Astra (OpenAI)" },
+    { "model": "anthropic/claude-fable-5.1", "model_label": "Claude Fable 5.1 (Anthropic)" },
+    { "model": "x-ai/grok-4.7", "model_label": "Grok 4.7 (xAI)" },
+    { "model": "moonshotai/kimi-k3", "model_label": "Kimi K3 (Moonshot)" },
+    { "model": "google/gemini-3.8-flash", "model_label": "Gemini 3.8 Flash (Google)" },
+    { "model": "z-ai/glm-5.3", "model_label": "GLM 5.3 (Z.ai)" }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "d1-fishpond",
+  "kind": "web-app",
+  "brief": "Build a single-file HTML game: a koi pond where fish gently follow the mouse cursor. One self-contained .html file (inline CSS/JS, no external dependencies, no build step). The fish should wander on their own and steer toward the cursor when it moves, with smooth motion and a calm, considered visual style. Deliver the complete file with no placeholders. Accompany the code with a brief explanation of your design choices.",
+  "language": "javascript",
+  "tests_expected": false
+}

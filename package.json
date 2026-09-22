@@ -1,0 +1,17 @@
+{
+  "name": "code-taste-bench",
+  "version": "1.0.0",
+  "description": "Benchmark suite ranking code-generating models on taste, judged by JEV over OpenRouter",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "generate": "bun src/cli/generate.ts",
+    "score": "bun src/cli/score.ts",
+    "reliability": "bun src/cli/reliability.ts",
+    "rating-sheet": "bun src/cli/rating-sheet.ts",
+    "rating-ingest": "bun src/cli/rating-ingest.ts",
+    "site": "bun scripts/build-site.ts",
+    "test": "bun test"
+  }
+}

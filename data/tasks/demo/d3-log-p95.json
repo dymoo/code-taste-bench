@@ -1,0 +1,7 @@
+{
+  "id": "d3-log-p95",
+  "kind": "utility",
+  "brief": "Write a Python CLI `p95paths`: reads an access-log CSV with columns timestamp,path,latency_ms and prints the top-N paths by 95th-percentile latency (default N=10), highest first, as `path  p95_ms  count`. Use argparse for --top and the input file (stdin when omitted). Malformed rows are skipped with a warning count on stderr; an empty or header-only input prints nothing and exits 0. Deliver a complete, runnable script plus focused tests covering the percentile math and malformed-row handling. Accompany the code with a brief explanation of your design choices.",
+  "language": "python",
+  "tests_expected": true
+}

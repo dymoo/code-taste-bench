@@ -1,0 +1,7 @@
+{
+  "id": "d2-relay-pricing",
+  "kind": "web-app",
+  "brief": "Build a single-file HTML pricing page for 'Relay', a fictional developer tool for running background jobs. Three tiers (Solo, Team, Business) with prices, feature lists, and one highlighted recommendation. Self-contained .html file (inline CSS/JS, no external dependencies, no build step). Restrained, legible design; responsive down to 360px. Deliver the complete file with no placeholders. Accompany the code with a brief explanation of your design choices.",
+  "language": "javascript",
+  "tests_expected": false
+}
