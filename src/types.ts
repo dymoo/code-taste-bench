@@ -27,9 +27,13 @@ export interface Artifact {
 export interface Provenance {
   model: string;
   model_label: string;
-  harness: "openrouter-chat-completions";
+  // Harness that produced the artifact. "openrouter-chat-completions" for the
+  // generated v1 corpus; harvested items carry the real-world harness name
+  // (swe-agent, openhands, devin, …) or "unknown".
+  harness: string;
   harness_version: string;
-  temperature: number;
+  // Missing on most harvested artifacts; validated when present.
+  temperature?: number;
   generated_at: string;
   source: "generated" | "harvested";
   source_url?: string;

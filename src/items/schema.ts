@@ -8,7 +8,6 @@ const TASK_KINDS = ["web-app", "utility", "refactor", "fix"] as const;
 const LANGUAGES = ["typescript", "javascript", "python"] as const;
 const TIERS = ["demo", "sealed"] as const;
 const FORMS = ["single-file", "tree", "diff"] as const;
-const HARNESS = "openrouter-chat-completions";
 const SOURCES = ["generated", "harvested"] as const;
 const REDISTRIBUTIONS = ["demo-eligible", "sealed-only"] as const;
 
@@ -103,12 +102,13 @@ export function validateItem(x: unknown): Item {
   const provenance = object(item.provenance, "provenance");
   string(provenance.model, "provenance.model");
   string(provenance.model_label, "provenance.model_label");
-  if (provenance.harness !== HARNESS) {
-    fail("provenance.harness", `expected ${JSON.stringify(HARNESS)}, got ${JSON.stringify(provenance.harness)}`);
-  }
+  string(provenance.harness, "provenance.harness");
   string(provenance.harness_version, "provenance.harness_version");
-  if (typeof provenance.temperature !== "number" || !Number.isFinite(provenance.temperature)) {
-    fail("provenance.temperature", "expected a finite number");
+  if (
+    provenance.temperature !== undefined &&
+    (typeof provenance.temperature !== "number" || !Number.isFinite(provenance.temperature))
+  ) {
+    fail("provenance.temperature", "expected a finite number when present");
   }
   const generatedAt = string(provenance.generated_at, "provenance.generated_at");
   if (Number.isNaN(Date.parse(generatedAt))) {
