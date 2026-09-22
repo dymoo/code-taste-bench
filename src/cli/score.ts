@@ -162,7 +162,12 @@ async function main(): Promise<void> {
   const demoOnly = process.argv.includes("--demo-only");
   const sealedPath = process.env.SEALED_REPO_PATH;
 
-  const rubric = JSON.parse(await Bun.file("rubric/rubric.json").text()) as ScoreRubric;
+  let rubric: ScoreRubric;
+  try {
+    rubric = JSON.parse(await Bun.file("rubric/rubric.json").text()) as ScoreRubric;
+  } catch (e) {
+    die(`score: cannot read rubric/rubric.json — run from the repo root (${errText(e)})`);
+  }
   const closeLabel = "too_close_to_call";
   if (typeof rubric.duel_criteria[closeLabel] !== "string") {
     die(`score: rubric/rubric.json duel_criteria must define the "${closeLabel}" option`);
@@ -228,6 +233,7 @@ async function main(): Promise<void> {
     for (const f of failures) console.error(`score: FAILED ${f}`);
     die(`score: ${failures.length} profile call(s) failed — partial run aborted, results.json not written`);
   }
+  // Every slot is filled: any null would have been recorded as a failure above.
   const profiles = slots as ItemProfile[];
 
   // ---- duels: per task, all model pairs, stable-sorted, 10% repeated -------

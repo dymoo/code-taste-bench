@@ -537,7 +537,7 @@ async function main(): Promise<void> {
     `trusted dimensions (alpha >= ${ALPHA_MIN} and within-one >= ${WITHIN_ONE_MIN * 100}%): ` +
       `${trusted.length >= 1 ? trusted.join(", ") : "none"}`,
   );
-  console.log(`PASS: ${pass ? "PASS" : "FAIL"} (needs >= ${MIN_TRUSTED_DIMENSIONS} trusted dimensions per SPEC §7)`);
+  console.log(`${pass ? "PASS" : "FAIL"} — needs >= ${MIN_TRUSTED_DIMENSIONS} trusted dimensions per SPEC §7`);
   console.log("wrote results/calibration.json");
 }
 

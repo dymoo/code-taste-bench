@@ -59,7 +59,12 @@ function isDuelResult(x: unknown): x is DuelResult {
 }
 
 async function main(): Promise<void> {
-  const rubric = JSON.parse(await Bun.file("rubric/rubric.json").text()) as ScoreRubric;
+  let rubric: ScoreRubric;
+  try {
+    rubric = JSON.parse(await Bun.file("rubric/rubric.json").text()) as ScoreRubric;
+  } catch (e) {
+    die(`reliability: cannot read rubric/rubric.json — run from the repo root (${errText(e)})`);
+  }
   const closeLabel = "too_close_to_call";
   if (typeof rubric.duel_criteria[closeLabel] !== "string") {
     die(`reliability: rubric/rubric.json duel_criteria must define the "${closeLabel}" option`);

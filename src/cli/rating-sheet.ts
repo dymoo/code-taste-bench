@@ -347,7 +347,12 @@ document.getElementById("export").addEventListener("click", function () {
 }
 
 async function main(): Promise<void> {
-  const rubric = JSON.parse(await Bun.file("rubric/rubric.json").text()) as SheetRubric;
+  let rubric: SheetRubric;
+  try {
+    rubric = JSON.parse(await Bun.file("rubric/rubric.json").text()) as SheetRubric;
+  } catch (e) {
+    die(`rating-sheet: cannot read rubric/rubric.json — run from the repo root (${errText(e)})`);
+  }
   if (!rubric.taste_definition || !rubric.dimensions) die("rating-sheet: rubric/rubric.json is malformed");
 
   let demo: Item[];
@@ -392,7 +397,7 @@ async function main(): Promise<void> {
       group.push(item);
     }
     const picked = dealEvenly(groups, target.count, mulberry32(target.seed));
-    if (picked.length < Math.min(target.count, target.pool.length)) {
+    if (picked.length < target.count) {
       console.warn(`rating-sheet: warning: ${target.tier} tier yielded only ${picked.length}/${target.count} items`);
     }
     pickedItems.push(...picked);
@@ -443,7 +448,7 @@ async function main(): Promise<void> {
       byTask.set(taskId, pairs);
     }
     const picked = dealDuels(byTask, target.count, mulberry32(target.seed));
-    if (picked.length < Math.min(target.count, target.pool.length)) {
+    if (picked.length < target.count) {
       console.warn(`rating-sheet: warning: ${target.tier} tier yielded only ${picked.length}/${target.count} duels`);
     }
     pickedPairs.push(...picked);
