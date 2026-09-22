@@ -1,0 +1,52 @@
+{
+  "task_id": "d1-fishpond",
+  "a_item": "d1-fishpond--google-gemini-3-8-flash",
+  "b_item": "d1-fishpond--openai-gpt-6-astra",
+  "a_model": "google/gemini-3.8-flash",
+  "b_model": "openai/gpt-6-astra",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088866-cnC9gn7j54inVWIRfNLC",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_a": 0.62,
+            "candidate_b": 0.37,
+            "too_close_to_call": 0.01
+          },
+          "confidence": 0.44
+        }
+      },
+      "usage": {
+        "input_tokens": 18200,
+        "output_tokens": 44,
+        "cost": 0.0007644
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088866-Tl75mO71EZvRzSc4VfcQ",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_b",
+          "probabilities": {
+            "too_close_to_call": 0.01,
+            "candidate_a": 0.47,
+            "candidate_b": 0.52
+          },
+          "confidence": 0.29
+        }
+      },
+      "usage": {
+        "input_tokens": 18200,
+        "output_tokens": 44,
+        "cost": 0.0007644
+      }
+    }
+  }
+}

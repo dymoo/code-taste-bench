@@ -1,0 +1,52 @@
+{
+  "task_id": "d4-refactor-orders",
+  "a_item": "d4-refactor-orders--google-gemini-3-8-flash",
+  "b_item": "d4-refactor-orders--x-ai-grok-4-7",
+  "a_model": "google/gemini-3.8-flash",
+  "b_model": "x-ai/grok-4.7",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088869-wp4AaoeNBEATUz3F7x3U",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_b": 0.39,
+            "too_close_to_call": 0.01,
+            "candidate_a": 0.6
+          },
+          "confidence": 0.41
+        }
+      },
+      "usage": {
+        "input_tokens": 7468,
+        "output_tokens": 44,
+        "cost": 0.000313656
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088869-jxkym0NUdwESMAUFfeGS",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_a": 0.8,
+            "candidate_b": 0.2,
+            "too_close_to_call": 0
+          },
+          "confidence": 0.7
+        }
+      },
+      "usage": {
+        "input_tokens": 7468,
+        "output_tokens": 44,
+        "cost": 0.000313656
+      }
+    }
+  }
+}

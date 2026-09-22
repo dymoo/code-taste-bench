@@ -1,0 +1,52 @@
+{
+  "task_id": "d4-refactor-orders",
+  "a_item": "d4-refactor-orders--anthropic-claude-fable-5-1",
+  "b_item": "d4-refactor-orders--z-ai-glm-5-3",
+  "a_model": "anthropic/claude-fable-5.1",
+  "b_model": "z-ai/glm-5.3",
+  "verdict": "a",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088869-MxtQoJeclMtEwBSJzRU7",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_a": 0.98,
+            "candidate_b": 0.02,
+            "too_close_to_call": 0
+          },
+          "confidence": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 7700,
+        "output_tokens": 44,
+        "cost": 0.0003234
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088869-yGcIOX1E48RYK06RcNa8",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_b",
+          "probabilities": {
+            "candidate_a": 0.14,
+            "too_close_to_call": 0.01,
+            "candidate_b": 0.85
+          },
+          "confidence": 0.79
+        }
+      },
+      "usage": {
+        "input_tokens": 7700,
+        "output_tokens": 44,
+        "cost": 0.0003234
+      }
+    }
+  }
+}

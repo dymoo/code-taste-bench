@@ -1,0 +1,74 @@
+{
+  "task_id": "d4-refactor-orders",
+  "a_item": "d4-refactor-orders--anthropic-claude-fable-5-1",
+  "b_item": "d4-refactor-orders--moonshotai-kimi-k3",
+  "a_model": "anthropic/claude-fable-5.1",
+  "b_model": "moonshotai/kimi-k3",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088868-x9DUa1X4U5P4NgfU9OUY",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_a": 0.55,
+            "candidate_b": 0.44,
+            "too_close_to_call": 0.01
+          },
+          "confidence": 0.32
+        }
+      },
+      "usage": {
+        "input_tokens": 8662,
+        "output_tokens": 44,
+        "cost": 0.000363804
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088868-tqfWMYuUMCs7zYjMCOPy",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_a": 0.64,
+            "too_close_to_call": 0.01,
+            "candidate_b": 0.35
+          },
+          "confidence": 0.47
+        }
+      },
+      "usage": {
+        "input_tokens": 8662,
+        "output_tokens": 44,
+        "cost": 0.000363804
+      }
+    }
+  },
+  "repeat": {
+    "id": "gen-dec-1790088869-uoezeGroChhZ73mrjjLC",
+    "model": "typesafe/jev-1.13-20260917",
+    "answers": {
+      "winner": {
+        "type": "choice",
+        "choice": "candidate_a",
+        "probabilities": {
+          "candidate_a": 0.53,
+          "candidate_b": 0.46,
+          "too_close_to_call": 0.01
+        },
+        "confidence": 0.29
+      }
+    },
+    "usage": {
+      "input_tokens": 8662,
+      "output_tokens": 44,
+      "cost": 0.000363804
+    }
+  },
+  "consistent": true
+}

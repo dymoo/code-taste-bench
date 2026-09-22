@@ -1,0 +1,323 @@
+{
+  "item_id": "d4-refactor-orders--moonshotai-kimi-k3",
+  "dimensions": {
+    "clarity": {
+      "type": "score",
+      "score": 2.99,
+      "legend": {
+        "0": "Misleading — names or structure obscure or invert what the code does",
+        "1": "Opaque — decipherable only by tracing execution line by line",
+        "2": "Understandable — conventional layout and mostly clear names, with some puzzling spots",
+        "3": "Clear — reads at the level of the idea; intent obvious from names and shape",
+        "4": "Exemplary — the structure itself explains the domain; a newcomer learns the model from the code"
+      },
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0.06,
+        "3": 0.89,
+        "4": 0.05
+      },
+      "confidence": 0.91
+    },
+    "idiom": {
+      "type": "score",
+      "score": 2.94,
+      "legend": {
+        "0": "Fights the language — hand-rolls what the platform provides, or abuses its constructs",
+        "1": "Wasteful — noticeable redundant machinery: thin wrappers, needless copies, abstraction that earns nothing",
+        "2": "Competent — idiomatic baseline with a few needless parts",
+        "3": "Lean — every construct earns its place; the deletion test passes",
+        "4": "Fluent — the shortest clear form; idiomatic shortcuts used exactly where they help"
+      },
+      "probabilities": {
+        "0": 0,
+        "1": 0.04,
+        "2": 0.2,
+        "3": 0.54,
+        "4": 0.22
+      },
+      "confidence": 0.58
+    },
+    "signal": {
+      "type": "score",
+      "score": 3.37,
+      "legend": {
+        "0": "Slop-saturated — narration, banners, emoji, or restating comments dominate",
+        "1": "Noisy — regular slop tells (trivial comments, tutorial voice) with little signal",
+        "2": "Mixed — uneven: some slop, some useful commentary",
+        "3": "Quiet — comments only where they carry why, invariants, or hazards",
+        "4": "Austere — nothing decorative; every comment is load-bearing"
+      },
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0.03,
+        "3": 0.56,
+        "4": 0.41
+      },
+      "confidence": 0.62
+    },
+    "comms": {
+      "type": "score",
+      "score": 3.32,
+      "legend": {
+        "0": "Misleading — contradicts or oversells the code",
+        "1": "Confusing — verbose, hedging, or hard to follow",
+        "2": "Serviceable — correct but padded or generic",
+        "3": "Clear — concise, accurate, states what matters",
+        "4": "Trusted — precise about tradeoffs and limits; you would forward it"
+      },
+      "probabilities": {
+        "0": 0.08,
+        "1": 0.04,
+        "2": 0.05,
+        "3": 0.14,
+        "4": 0.69
+      },
+      "confidence": 0.44
+    },
+    "tests": {
+      "type": "score",
+      "score": 3.5,
+      "legend": {
+        "0": "Missing where the task needs them, or counterproductive — proves nothing or asserts mock echoes",
+        "1": "Slop-heavy — verbose scaffolding, imprecise matchers, bleeding state",
+        "2": "Present — checks something real but shallow or duplicative",
+        "3": "Earned — verifies the actual contract including failure paths",
+        "4": "Model — minimal, precise, and itself teaches the contract"
+      },
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0.01,
+        "3": 0.47,
+        "4": 0.52
+      },
+      "confidence": 0.58
+    }
+  },
+  "has_explanation": {
+    "type": "noul",
+    "noul": 0.99
+  },
+  "has_tests": {
+    "type": "noul",
+    "noul": 0.99
+  },
+  "slop": {
+    "type_laundering": {
+      "type": "noul",
+      "noul": 0.25
+    },
+    "unvalidated_boundary": {
+      "type": "noul",
+      "noul": 0.33
+    },
+    "accumulating_copy": {
+      "type": "noul",
+      "noul": 0.06
+    },
+    "eager_pipeline": {
+      "type": "noul",
+      "noul": 0.07
+    },
+    "comment_slop": {
+      "type": "noul",
+      "noul": 0.61
+    },
+    "emoji_marketing": {
+      "type": "noul",
+      "noul": 0.02
+    },
+    "inflated_prose": {
+      "type": "noul",
+      "noul": 0.22
+    },
+    "swallowed_errors": {
+      "type": "noul",
+      "noul": 0.51
+    },
+    "placeholder_residue": {
+      "type": "noul",
+      "noul": 0.08
+    },
+    "ceremony_structure": {
+      "type": "noul",
+      "noul": 0.25
+    },
+    "self_proving_tests": {
+      "type": "noul",
+      "noul": 0.04
+    },
+    "silencing_tells": {
+      "type": "noul",
+      "noul": 0.1
+    }
+  },
+  "composite": 3.224,
+  "calls": [
+    {
+      "id": "gen-dec-1790088864-RycRHASbzbeXcTCnVJWr",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "clarity": {
+          "type": "score",
+          "score": 2.99,
+          "legend": {
+            "0": "Misleading — names or structure obscure or invert what the code does",
+            "1": "Opaque — decipherable only by tracing execution line by line",
+            "2": "Understandable — conventional layout and mostly clear names, with some puzzling spots",
+            "3": "Clear — reads at the level of the idea; intent obvious from names and shape",
+            "4": "Exemplary — the structure itself explains the domain; a newcomer learns the model from the code"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.06,
+            "3": 0.89,
+            "4": 0.05
+          },
+          "confidence": 0.91
+        },
+        "idiom": {
+          "type": "score",
+          "score": 2.94,
+          "legend": {
+            "0": "Fights the language — hand-rolls what the platform provides, or abuses its constructs",
+            "1": "Wasteful — noticeable redundant machinery: thin wrappers, needless copies, abstraction that earns nothing",
+            "2": "Competent — idiomatic baseline with a few needless parts",
+            "3": "Lean — every construct earns its place; the deletion test passes",
+            "4": "Fluent — the shortest clear form; idiomatic shortcuts used exactly where they help"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.04,
+            "2": 0.2,
+            "3": 0.54,
+            "4": 0.22
+          },
+          "confidence": 0.58
+        },
+        "signal": {
+          "type": "score",
+          "score": 3.37,
+          "legend": {
+            "0": "Slop-saturated — narration, banners, emoji, or restating comments dominate",
+            "1": "Noisy — regular slop tells (trivial comments, tutorial voice) with little signal",
+            "2": "Mixed — uneven: some slop, some useful commentary",
+            "3": "Quiet — comments only where they carry why, invariants, or hazards",
+            "4": "Austere — nothing decorative; every comment is load-bearing"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.03,
+            "3": 0.56,
+            "4": 0.41
+          },
+          "confidence": 0.62
+        },
+        "comms": {
+          "type": "score",
+          "score": 3.32,
+          "legend": {
+            "0": "Misleading — contradicts or oversells the code",
+            "1": "Confusing — verbose, hedging, or hard to follow",
+            "2": "Serviceable — correct but padded or generic",
+            "3": "Clear — concise, accurate, states what matters",
+            "4": "Trusted — precise about tradeoffs and limits; you would forward it"
+          },
+          "probabilities": {
+            "0": 0.08,
+            "1": 0.04,
+            "2": 0.05,
+            "3": 0.14,
+            "4": 0.69
+          },
+          "confidence": 0.44
+        },
+        "tests": {
+          "type": "score",
+          "score": 3.5,
+          "legend": {
+            "0": "Missing where the task needs them, or counterproductive — proves nothing or asserts mock echoes",
+            "1": "Slop-heavy — verbose scaffolding, imprecise matchers, bleeding state",
+            "2": "Present — checks something real but shallow or duplicative",
+            "3": "Earned — verifies the actual contract including failure paths",
+            "4": "Model — minimal, precise, and itself teaches the contract"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.47,
+            "4": 0.52
+          },
+          "confidence": 0.58
+        },
+        "type_laundering": {
+          "type": "noul",
+          "noul": 0.25
+        },
+        "unvalidated_boundary": {
+          "type": "noul",
+          "noul": 0.33
+        },
+        "accumulating_copy": {
+          "type": "noul",
+          "noul": 0.06
+        },
+        "eager_pipeline": {
+          "type": "noul",
+          "noul": 0.07
+        },
+        "comment_slop": {
+          "type": "noul",
+          "noul": 0.61
+        },
+        "emoji_marketing": {
+          "type": "noul",
+          "noul": 0.02
+        },
+        "inflated_prose": {
+          "type": "noul",
+          "noul": 0.22
+        },
+        "swallowed_errors": {
+          "type": "noul",
+          "noul": 0.51
+        },
+        "placeholder_residue": {
+          "type": "noul",
+          "noul": 0.08
+        },
+        "ceremony_structure": {
+          "type": "noul",
+          "noul": 0.25
+        },
+        "self_proving_tests": {
+          "type": "noul",
+          "noul": 0.04
+        },
+        "silencing_tells": {
+          "type": "noul",
+          "noul": 0.1
+        },
+        "has_explanation": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "has_tests": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 6211,
+        "output_tokens": 334,
+        "cost": 0.000260862
+      }
+    }
+  ]
+}

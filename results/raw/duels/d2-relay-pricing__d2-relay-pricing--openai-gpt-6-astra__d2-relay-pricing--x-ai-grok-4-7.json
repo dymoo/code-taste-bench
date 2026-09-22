@@ -1,0 +1,52 @@
+{
+  "task_id": "d2-relay-pricing",
+  "a_item": "d2-relay-pricing--openai-gpt-6-astra",
+  "b_item": "d2-relay-pricing--x-ai-grok-4-7",
+  "a_model": "openai/gpt-6-astra",
+  "b_model": "x-ai/grok-4.7",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088867-pfxZWufuNTcTyfKxggQY",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "too_close_to_call": 0.01,
+            "candidate_a": 0.62,
+            "candidate_b": 0.37
+          },
+          "confidence": 0.44
+        }
+      },
+      "usage": {
+        "input_tokens": 11355,
+        "output_tokens": 44,
+        "cost": 0.00047691
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088867-v4wvvKWD3x7xX6TlNLQb",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "too_close_to_call": 0.01,
+            "candidate_b": 0.19,
+            "candidate_a": 0.8
+          },
+          "confidence": 0.71
+        }
+      },
+      "usage": {
+        "input_tokens": 11355,
+        "output_tokens": 44,
+        "cost": 0.00047691
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "task_id": "d4-refactor-orders",
+  "a_item": "d4-refactor-orders--moonshotai-kimi-k3",
+  "b_item": "d4-refactor-orders--z-ai-glm-5-3",
+  "a_model": "moonshotai/kimi-k3",
+  "b_model": "z-ai/glm-5.3",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088869-BIbx6RiG5C5WY4yHbAUv",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "too_close_to_call": 0,
+            "candidate_b": 0.14,
+            "candidate_a": 0.86
+          },
+          "confidence": 0.79
+        }
+      },
+      "usage": {
+        "input_tokens": 7951,
+        "output_tokens": 44,
+        "cost": 0.000333942
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088869-FFJXiWe3QABTbFkKSx9X",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_b",
+          "probabilities": {
+            "candidate_b": 0.61,
+            "too_close_to_call": 0,
+            "candidate_a": 0.39
+          },
+          "confidence": 0.41
+        }
+      },
+      "usage": {
+        "input_tokens": 7951,
+        "output_tokens": 44,
+        "cost": 0.000333942
+      }
+    }
+  },
+  "repeat": {
+    "id": "gen-dec-1790088870-3k35gtkNkJOJVNUrYSe5",
+    "model": "typesafe/jev-1.13-20260917",
+    "answers": {
+      "winner": {
+        "type": "choice",
+        "choice": "candidate_a",
+        "probabilities": {
+          "candidate_a": 0.89,
+          "too_close_to_call": 0,
+          "candidate_b": 0.11
+        },
+        "confidence": 0.83
+      }
+    },
+    "usage": {
+      "input_tokens": 7951,
+      "output_tokens": 44,
+      "cost": 0.000333942
+    }
+  },
+  "consistent": true
+}

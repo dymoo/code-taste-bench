@@ -1,0 +1,52 @@
+{
+  "task_id": "d1-fishpond",
+  "a_item": "d1-fishpond--moonshotai-kimi-k3",
+  "b_item": "d1-fishpond--z-ai-glm-5-3",
+  "a_model": "moonshotai/kimi-k3",
+  "b_model": "z-ai/glm-5.3",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088866-i4fUf4aOtjH67cYxIA0g",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_b": 0.21,
+            "candidate_a": 0.78,
+            "too_close_to_call": 0.01
+          },
+          "confidence": 0.67
+        }
+      },
+      "usage": {
+        "input_tokens": 16574,
+        "output_tokens": 44,
+        "cost": 0.000696108
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088866-rM36cOS147DeHqDGBN2e",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "too_close_to_call": 0.02,
+            "candidate_a": 0.64,
+            "candidate_b": 0.34
+          },
+          "confidence": 0.45
+        }
+      },
+      "usage": {
+        "input_tokens": 16574,
+        "output_tokens": 44,
+        "cost": 0.000696108
+      }
+    }
+  }
+}

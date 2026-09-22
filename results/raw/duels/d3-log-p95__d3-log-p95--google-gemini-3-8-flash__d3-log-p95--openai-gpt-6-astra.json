@@ -1,0 +1,52 @@
+{
+  "task_id": "d3-log-p95",
+  "a_item": "d3-log-p95--google-gemini-3-8-flash",
+  "b_item": "d3-log-p95--openai-gpt-6-astra",
+  "a_model": "google/gemini-3.8-flash",
+  "b_model": "openai/gpt-6-astra",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088868-9b2SewdKPgtG47sCbSNk",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_b": 0.47,
+            "too_close_to_call": 0.01,
+            "candidate_a": 0.52
+          },
+          "confidence": 0.29
+        }
+      },
+      "usage": {
+        "input_tokens": 6944,
+        "output_tokens": 44,
+        "cost": 0.000291648
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088868-exqcML9fDFSglXO9Pf9l",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_b": 0.14,
+            "candidate_a": 0.86,
+            "too_close_to_call": 0
+          },
+          "confidence": 0.78
+        }
+      },
+      "usage": {
+        "input_tokens": 6944,
+        "output_tokens": 44,
+        "cost": 0.000291648
+      }
+    }
+  }
+}

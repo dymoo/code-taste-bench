@@ -1,0 +1,52 @@
+{
+  "task_id": "d4-refactor-orders",
+  "a_item": "d4-refactor-orders--moonshotai-kimi-k3",
+  "b_item": "d4-refactor-orders--openai-gpt-6-astra",
+  "a_model": "moonshotai/kimi-k3",
+  "b_model": "openai/gpt-6-astra",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088869-VZpUabymnCGJYisOqAI8",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_a": 0.78,
+            "too_close_to_call": 0,
+            "candidate_b": 0.22
+          },
+          "confidence": 0.67
+        }
+      },
+      "usage": {
+        "input_tokens": 8353,
+        "output_tokens": 44,
+        "cost": 0.000350826
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088869-6J5NpAhwYH5NXQnFgNDs",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_b",
+          "probabilities": {
+            "candidate_b": 0.67,
+            "candidate_a": 0.32,
+            "too_close_to_call": 0.01
+          },
+          "confidence": 0.51
+        }
+      },
+      "usage": {
+        "input_tokens": 8353,
+        "output_tokens": 44,
+        "cost": 0.000350826
+      }
+    }
+  }
+}

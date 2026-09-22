@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-09-22T14:55:04.884Z",
+  "total_duels": 33,
+  "skipped_files": 0,
+  "swap_agreement": 0.5454545454545454,
+  "swap_counts": {
+    "agree": 18,
+    "both_close": 0,
+    "split": 15,
+    "one_close": 0
+  },
+  "repeat_sample": 3,
+  "repeat_agreement": 1,
+  "confidence_curve": [
+    {
+      "lo": 0.3,
+      "hi": 0.4,
+      "n": 2,
+      "swap_agreement": 0.5
+    },
+    {
+      "lo": 0.5,
+      "hi": 0.6,
+      "n": 14,
+      "swap_agreement": 0.21428571428571427
+    },
+    {
+      "lo": 0.6,
+      "hi": 0.7,
+      "n": 8,
+      "swap_agreement": 0.75
+    },
+    {
+      "lo": 0.7,
+      "hi": 0.8,
+      "n": 6,
+      "swap_agreement": 0.8333333333333334
+    },
+    {
+      "lo": 0.8,
+      "hi": 0.9,
+      "n": 3,
+      "swap_agreement": 1
+    }
+  ],
+  "verdicts": {
+    "a": 6,
+    "b": 0,
+    "tie": 27
+  }
+}

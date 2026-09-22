@@ -1,0 +1,52 @@
+{
+  "task_id": "d4-refactor-orders",
+  "a_item": "d4-refactor-orders--openai-gpt-6-astra",
+  "b_item": "d4-refactor-orders--z-ai-glm-5-3",
+  "a_model": "openai/gpt-6-astra",
+  "b_model": "z-ai/glm-5.3",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088870-ZNz7maWgW98IOp7pILPf",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "too_close_to_call": 0,
+            "candidate_a": 0.77,
+            "candidate_b": 0.23
+          },
+          "confidence": 0.65
+        }
+      },
+      "usage": {
+        "input_tokens": 7391,
+        "output_tokens": 44,
+        "cost": 0.000310422
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088870-PNwOjA5rjI88MEesC7pg",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_a": 0.69,
+            "too_close_to_call": 0,
+            "candidate_b": 0.31
+          },
+          "confidence": 0.54
+        }
+      },
+      "usage": {
+        "input_tokens": 7391,
+        "output_tokens": 44,
+        "cost": 0.000310422
+      }
+    }
+  }
+}

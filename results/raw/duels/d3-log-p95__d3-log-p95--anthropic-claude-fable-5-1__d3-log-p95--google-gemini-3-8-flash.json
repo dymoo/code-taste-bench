@@ -1,0 +1,52 @@
+{
+  "task_id": "d3-log-p95",
+  "a_item": "d3-log-p95--anthropic-claude-fable-5-1",
+  "b_item": "d3-log-p95--google-gemini-3-8-flash",
+  "a_model": "anthropic/claude-fable-5.1",
+  "b_model": "google/gemini-3.8-flash",
+  "verdict": "a",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088867-NDBsAFKW9YiSvkJGY2ba",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "too_close_to_call": 0,
+            "candidate_a": 0.99,
+            "candidate_b": 0.01
+          },
+          "confidence": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 7758,
+        "output_tokens": 44,
+        "cost": 0.000325836
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088867-g25S5i7EyqPMlIJB9ewo",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_b",
+          "probabilities": {
+            "too_close_to_call": 0,
+            "candidate_a": 0.21,
+            "candidate_b": 0.79
+          },
+          "confidence": 0.68
+        }
+      },
+      "usage": {
+        "input_tokens": 7758,
+        "output_tokens": 44,
+        "cost": 0.000325836
+      }
+    }
+  }
+}

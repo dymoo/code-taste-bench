@@ -1,0 +1,52 @@
+{
+  "task_id": "d4-refactor-orders",
+  "a_item": "d4-refactor-orders--google-gemini-3-8-flash",
+  "b_item": "d4-refactor-orders--moonshotai-kimi-k3",
+  "a_model": "google/gemini-3.8-flash",
+  "b_model": "moonshotai/kimi-k3",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088869-nJR69MHmNUtGjHCl0zcr",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_b",
+          "probabilities": {
+            "candidate_a": 0.36,
+            "too_close_to_call": 0,
+            "candidate_b": 0.64
+          },
+          "confidence": 0.46
+        }
+      },
+      "usage": {
+        "input_tokens": 8549,
+        "output_tokens": 44,
+        "cost": 0.000359058
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088869-7cyp67OTjcn2qrKNAS5b",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_b": 0.11,
+            "too_close_to_call": 0,
+            "candidate_a": 0.89
+          },
+          "confidence": 0.84
+        }
+      },
+      "usage": {
+        "input_tokens": 8549,
+        "output_tokens": 44,
+        "cost": 0.000359058
+      }
+    }
+  }
+}

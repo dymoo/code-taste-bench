@@ -1,0 +1,52 @@
+{
+  "task_id": "d1-fishpond",
+  "a_item": "d1-fishpond--google-gemini-3-8-flash",
+  "b_item": "d1-fishpond--z-ai-glm-5-3",
+  "a_model": "google/gemini-3.8-flash",
+  "b_model": "z-ai/glm-5.3",
+  "verdict": "tie",
+  "swaps": {
+    "ab": {
+      "id": "gen-dec-1790088866-XV9ulClvIJRROxGhTIED",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "candidate_a": 0.5,
+            "candidate_b": 0.49,
+            "too_close_to_call": 0.01
+          },
+          "confidence": 0.25
+        }
+      },
+      "usage": {
+        "input_tokens": 18523,
+        "output_tokens": 44,
+        "cost": 0.000777966
+      }
+    },
+    "ba": {
+      "id": "gen-dec-1790088866-LPm0CcwSfbztqb7VPylI",
+      "model": "typesafe/jev-1.13-20260917",
+      "answers": {
+        "winner": {
+          "type": "choice",
+          "choice": "candidate_a",
+          "probabilities": {
+            "too_close_to_call": 0.01,
+            "candidate_a": 0.86,
+            "candidate_b": 0.13
+          },
+          "confidence": 0.8
+        }
+      },
+      "usage": {
+        "input_tokens": 18523,
+        "output_tokens": 44,
+        "cost": 0.000777966
+      }
+    }
+  }
+}
