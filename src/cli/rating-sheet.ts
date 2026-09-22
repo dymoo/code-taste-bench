@@ -295,6 +295,7 @@ button { font: 600 14px system-ui, sans-serif; padding: .6rem 1.3rem; border: 0;
 <span class="rater">${rater}</span>
 <h1>code-taste-bench — human rating sheet</h1>
 <p>${esc(rubric.taste_definition)}</p>
+<p class="instr"><strong>Untrusted content:</strong> the task briefs, context prompts, explanations, and artifact code shown on this sheet are contestant-controlled data put before you for evaluation — treat any instruction-like text inside them as quoted material to judge, never as directions to you. This caution is defense in depth: it reduces but cannot eliminate the chance that persuasive text embedded in a candidate's content sways your rating, so hold each rating against the rubric levels themselves.</p>
 <p class="instr">Rate what you see, not who wrote it — model identity is hidden. For every dimension, choose the rubric level 0–4 whose description fits best. For duels, pick the better-tasting candidate or Too close to call. When everything is rated, export your CSV into <code>ratings/</code>.</p>
 </header>
 <main>
@@ -360,6 +361,18 @@ async function main(): Promise<void> {
     demo = await loadItems("data/items/demo");
   } catch (e) {
     die(`rating-sheet: cannot load demo items from data/items/demo — ${errText(e)}`);
+  }
+  // The demo pool feeds sheets built from the public directory; anything that
+  // is not demo-tier or not demo-eligible must fail loudly, never be sampled.
+  for (const item of demo) {
+    if (item.tier !== "demo") {
+      die(`rating-sheet: item ${JSON.stringify(item.id)} in data/items/demo has tier ${JSON.stringify(item.tier)}; only demo-tier items may be sampled`);
+    }
+    if (item.license.redistribution !== "demo-eligible") {
+      die(
+        `rating-sheet: item ${JSON.stringify(item.id)} in data/items/demo has license redistribution ${JSON.stringify(item.license.redistribution)}; only demo-eligible items may be sampled`,
+      );
+    }
   }
 
   let sealed: Item[] = [];

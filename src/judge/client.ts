@@ -6,7 +6,8 @@ import type { Answers, Judge, JudgeCall, Questions } from "../types";
 
 export interface CreateJudgeOptions {
   apiKey: string;
-  /** Pinned judge model. Defaults to the v1 generation pin. */
+  /** Pinned judge model. Only `typesafe/jev-1.13` is accepted — any other
+   * value is rejected at construction, before any fetch. Defaults to the pin. */
   model?: string;
   /** OpenRouter origin; the /api/alpha/decisions path is appended. */
   baseUrl?: string;
@@ -159,6 +160,11 @@ function mapResponse(payload: unknown): JudgeCall {
 
 export function createJudge(opts: CreateJudgeOptions): Judge {
   const model = opts.model ?? DEFAULT_MODEL;
+  if (model !== DEFAULT_MODEL) {
+    throw new Error(
+      `judge: model ${JSON.stringify(model)} is not the pinned judge — only JEV judging is allowed (pinned ${DEFAULT_MODEL}); this call was rejected before any fetch`,
+    );
+  }
   const url = `${(opts.baseUrl ?? DEFAULT_BASE_URL).replace(/\/+$/, "")}/api/alpha/decisions`;
 
   return {

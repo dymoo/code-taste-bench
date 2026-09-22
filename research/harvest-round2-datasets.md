@@ -406,3 +406,36 @@ only. Any dataset that *requires* remote-code execution to load is classified `u
   search parity with Zenodo **[UNVERIFIED: figshare-specific sweep]**; SWE-bench *leaderboard*
   submission dumps (per-model patches behind the official leaderboard) not located as a bulk
   public artifact **[UNVERIFIED]**.
+
+## WildClaw pilot acceptance: quarantined, not scored
+
+The first extraction inspected revision `d2816016a7a7b41fa6b7ba368b28ddafcb54fd93`
+and produced 50 candidate items across five tasks and twelve source model labels.
+These are **not accepted benchmark items**. They were removed from the public
+demo directory into private quarantine before any JEV judging or publication.
+
+Acceptance blockers:
+
+- The dataset publication date was substituted into `generated_at`; it is not
+  evidence of when a model produced an artifact.
+- The mapper assigned `kind: fix`, `language: python`, and
+  `tests_expected: true` indiscriminately. Several tasks are noncoding workflows
+  with incidental helper scripts; mixed-language outputs need item-level review.
+- The source model roster has no overlap with the existing generated corpus.
+  A disconnected comparison graph cannot produce a defensible shared Elo scale.
+  A different agent harness is also a confound, not a controlled model comparison.
+- The grid is incomplete (6–12 variants per task), not a full five-by-twelve
+  experiment. Dataset-level licensing still requires checking bundled source
+  material and attribution obligations before redistribution.
+
+The source remains a candidate for a separately labeled cohort after metadata,
+artifact relevance, and rights are verified. Merely passing the Item JSON schema
+does not constitute acceptance. Dataset-card use classes above are research
+candidates, not blanket permission to publish every bundled file.
+
+Safety review found no execution of harvested code in this extraction. Archive
+resource limits, redirect validation, and site-output path containment still
+required hardening for future inputs. HTML escaping and tar special-file
+rejection were present. Judge prompt-injection remains a benchmark-integrity
+risk even when artifacts are never executed; instruction framing and swapped
+positions cannot guarantee immunity.

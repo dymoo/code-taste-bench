@@ -3,8 +3,9 @@
 // optional results/raw/ judge detail, and docs/methodology.md.
 // Zero runtime dependencies; Bun ≥ 1.2, TypeScript strict.
 
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, writeFileSync } from "node:fs";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
+import { validateItem } from "../src/items/schema";
 import type { DimensionId, Item, Leaderboard, ModelSummary, SlopId } from "../src/types";
 
 // ---------------------------------------------------------------------------
@@ -55,6 +56,18 @@ function readJson(path: string): unknown {
   }
 }
 
+/** Deepest existing ancestor of `start` (inclusive) — used to validate a write
+ *  target before mkdirSync, so creating directories can never itself escape. */
+function existingAncestor(start: string): string {
+  let current = start;
+  while (!existsSync(current)) {
+    const parent = dirname(current);
+    if (parent === current) return current;
+    current = parent;
+  }
+  return current;
+}
+
 // ---------------------------------------------------------------------------
 // Small utilities
 // ---------------------------------------------------------------------------
@@ -76,12 +89,23 @@ function byCodepoint(a: string, b: string): number {
   return a < b ? -1 : a > b ? 1 : 0;
 }
 
-/** Turn an id into a safe relative path (segments keep "/" as directories). */
+/** Turn an id into a safe relative path (segments keep "/" as directories).
+ *  Rejects — never silently rewrites — absolute paths, backslashes, and
+ *  traversal/dot/empty segments: a hostile id or model name fails the build
+ *  instead of steering a write outside --out. */
 function safePath(id: string): string {
-  return id
-    .split("/")
-    .map((segment) => segment.replace(/[^A-Za-z0-9._-]/g, "-") || "_")
-    .join("/");
+  const refuse = (reason: string): never => {
+    throw new Error(`build-site: refusing path-like identity ${JSON.stringify(id)}: ${reason}`);
+  };
+  if (id.includes("\\")) refuse("backslashes are not allowed");
+  if (id.startsWith("/")) refuse("absolute paths are not allowed");
+  const segments = id.split("/");
+  for (const segment of segments) {
+    if (segment === "" || segment === "." || segment === "..") {
+      refuse(`segment ${JSON.stringify(segment)} is empty, a dot, or traversal`);
+    }
+  }
+  return segments.map((segment) => segment.replace(/[^A-Za-z0-9._-]/g, "-") || "_").join("/");
 }
 
 function fmt(value: number, digits: number): string {
@@ -816,16 +840,32 @@ function loadItems(dataDir: string): Item[] {
   const dir = join(dataDir, "data", "items", "demo");
   if (!existsSync(dir)) return [];
   const items: Item[] = [];
+  const seen = new Set<string>();
   for (const entry of readdirSync(dir).sort(byCodepoint)) {
     if (!entry.endsWith(".json")) continue;
+    const file = join(dir, entry);
+    const parsed = readJson(file); // throws with the file path on invalid JSON
+    let item: Item;
     try {
-      const parsed = readJson(join(dir, entry));
-      if (isRecord(parsed) && typeof parsed["id"] === "string") {
-        items.push(parsed as unknown as Item);
-      }
-    } catch {
-      // Defensive: an unreadable item file must not take the whole build down.
+      item = validateItem(parsed);
+    } catch (cause) {
+      throw new Error(`build-site: ${file}: ${cause instanceof Error ? cause.message : String(cause)}`);
     }
+    if (item.tier !== "demo") {
+      throw new Error(
+        `build-site: ${file}: item ${JSON.stringify(item.id)} has tier ${JSON.stringify(item.tier)}; only demo-tier items may be published.`,
+      );
+    }
+    if (item.license.redistribution !== "demo-eligible") {
+      throw new Error(
+        `build-site: ${file}: item ${JSON.stringify(item.id)} has license redistribution ${JSON.stringify(item.license.redistribution)}; only demo-eligible items may be published.`,
+      );
+    }
+    if (seen.has(item.id)) {
+      throw new Error(`build-site: duplicate item id ${JSON.stringify(item.id)} (${file}).`);
+    }
+    seen.add(item.id);
+    items.push(item);
   }
   return items.sort((a, b) => byCodepoint(a.id, b.id));
 }
@@ -1276,9 +1316,39 @@ function main(): void {
   const inputs: Inputs = { dataDir, leaderboard, items, rawByItem: raw, methodology };
 
   const write = (relativePath: string, content: string): void => {
+    if (relativePath === "" || isAbsolute(relativePath) || relativePath.includes("\\")) {
+      throw new Error(`build-site: refusing to write ${JSON.stringify(relativePath)}: not a plain relative output path.`);
+    }
     const target = join(outDir, relativePath);
+    const lexical = relative(outDir, target);
+    if (lexical === "" || lexical.startsWith("..") || isAbsolute(lexical)) {
+      throw new Error(`build-site: refusing to write ${target}: it escapes the output root ${outDir}.`);
+    }
     assertPublic(target);
+    // Validate the deepest EXISTING ancestor before mkdir: creating directory
+    // levels through a symlink planted inside --out would itself escape the
+    // root. Resolve symlinks on both sides of the comparison.
+    const rootStart = existsSync(outDir) ? outDir : existingAncestor(outDir);
+    const dirStart = existingAncestor(dirname(target));
+    const pre = relative(realpathSync(rootStart), realpathSync(dirStart));
+    if (pre.startsWith("..") || isAbsolute(pre)) {
+      throw new Error(
+        `build-site: refusing to write ${target}: ${dirStart} resolves outside the output root ${rootStart} (symlink ancestor?).`,
+      );
+    }
     mkdirSync(dirname(target), { recursive: true });
+    // Re-check after mkdir: the directory now exists, so resolve it directly.
+    const rootReal = realpathSync(outDir);
+    const dirReal = realpathSync(dirname(target));
+    const resolved = relative(rootReal, dirReal);
+    if (resolved.startsWith("..") || isAbsolute(resolved)) {
+      throw new Error(
+        `build-site: refusing to write ${target}: its directory resolves to ${dirReal}, outside the output root ${rootReal} (symlink ancestor?).`,
+      );
+    }
+    if (existsSync(target) && lstatSync(target).isSymbolicLink()) {
+      throw new Error(`build-site: refusing to write ${target}: it is a symlink.`);
+    }
     writeFileSync(target, content, "utf8");
   };
 

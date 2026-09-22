@@ -16,7 +16,7 @@ Requires Bun ≥ 1.2 and an `OPENROUTER_API_KEY`. Sealed-tier runs additionally 
 
 | Command | What it does |
 | --- | --- |
-| `bun run generate` | Produces the corpus: one item per model per task, provenance recorded |
+| `bun run generate` | **Disabled by spend policy** — exits nonzero before any network call; artifacts are sourced, never contestant-generated (no bypass) |
 | `bun run score` | Runs item profiles and duels, writes `results/results.json` |
 | `bun run reliability` | Swap/repeat/confidence reliability stats from raw calls |
 | `bun run rating-sheet` | Blinded human rating sheets (custody-controlled output) |

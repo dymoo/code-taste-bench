@@ -16,9 +16,11 @@ Machine-readable form: `rubric/rubric.json` (authoritative). Five score dimensio
 
 Item schema and fields: `src/types.ts` (authoritative). v1 corpus is **generated** — harvested sources are license-blocked; they fold in `sealed-only` as permissions arrive. 8 tasks (4 demo in `data/tasks/demo/`, 4 sealed in the private store) × 6 frontier models (≥4 labs, from the live OpenRouter catalog) = 48 items. One shot per model per task at `temperature 0.3`, output captured verbatim (code + accompanying prose = the `comms` target). Failed/empty generations are recorded and excluded from duels.
 
-**Spend policy (user-mandated, 2026-09-22):** contestant models are never called — artifacts are **sourced**, not generated. JEV is the only paid API the suite may call. The v1 generated corpus predates this rule and is retained as owned material; all corpus growth is harvested (permissive-license material for the demo tier, permission-pending or no-redistribution material for the sealed tier). `src/cli/generate.ts` remains as historical harness documentation and is not part of ongoing runs.
+**Spend policy (user-mandated, 2026-09-22):** contestant models are never called — artifacts are **sourced**, not generated. JEV is the only paid API the suite may call. The v1 generated corpus predates this rule and is retained as owned material; all corpus growth is harvested (permissive-license material for the demo tier, no-redistribution material for the sealed tier). Permission-pending material is **quarantined**, not usable anywhere: unknown permission is not permission, and keeping it private grants none — it folds into the sealed tier only after explicit permission arrives. `src/cli/generate.ts` is disabled at the executable entrypoint: it fails closed with a policy error before any network call, with no bypass flag.
 
 **Untrusted-content policy (user-mandated, 2026-09-22):** corpus code is hostile **data** and is never executed — not by the suite, not by extraction tooling, not by CI. Extraction is strictly text-only (parse files with static tooling; no installs, builds, tests, hooks, or dataset loader code from third-party sources; Hugging Face `trust_remote_code` is forbidden). Artifacts reach JEV as state text and reach readers only through HTML-escaping renderers. Anything that can only be harvested by executing its code is `unusable`.
+
+**Harvest acceptance gate:** imports enter an explicit quarantine outside the public checkout, never directly into `data/items/demo`. Dataset publication dates must not be represented as generation timestamps; missing provenance remains unknown. Verify task relevance, per-artifact language, model attribution, and redistribution rights before promotion. Cohorts without overlapping comparison evidence cannot share an Elo scale. Untrusted-content framing is defense in depth against judge persuasion, not proof of prompt-injection immunity. Existing published scores are historical runs and are not silently recalculated after instruction changes.
 
 ## 4. Duels and rating ([#5](https://github.com/dymoo/code-taste-bench/issues/5))
 
@@ -53,7 +55,7 @@ src/rate/bradleyTerry.ts  fitBT(wins), tasteElo(theta, geoMean)
 src/rate/aggregate.ts     aggregate(profiles, duels, meta): Leaderboard
 src/items/schema.ts       validateItem()
 src/items/load.ts         loadItems(dir)
-src/cli/generate.ts       corpus generation (OpenRouter chat completions)
+src/cli/generate.ts       generation entrypoint — disabled by spend policy (fails before any network call)
 src/cli/score.ts          judging run → results/
 src/cli/reliability.ts    swap/repeat/confidence stats
 src/cli/rating-sheet.ts   blinded human rating sheets
