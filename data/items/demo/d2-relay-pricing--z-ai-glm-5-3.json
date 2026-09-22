@@ -1,0 +1,35 @@
+{
+  "id": "d2-relay-pricing--z-ai-glm-5-3",
+  "tier": "demo",
+  "task": {
+    "id": "d2-relay-pricing",
+    "kind": "web-app",
+    "brief": "Build a single-file HTML pricing page for 'Relay', a fictional developer tool for running background jobs. Three tiers (Solo, Team, Business) with prices, feature lists, and one highlighted recommendation. Self-contained .html file (inline CSS/JS, no external dependencies, no build step). Restrained, legible design; responsive down to 360px. Deliver the complete file with no placeholders. Accompany the code with a brief explanation of your design choices.",
+    "language": "javascript",
+    "tests_expected": false
+  },
+  "artifact": {
+    "form": "single-file",
+    "files": []
+  },
+  "context": {
+    "prompt": "Build a single-file HTML pricing page for 'Relay', a fictional developer tool for running background jobs. Three tiers (Solo, Team, Business) with prices, feature lists, and one highlighted recommendation. Self-contained .html file (inline CSS/JS, no external dependencies, no build step). Restrained, legible design; responsive down to 360px. Deliver the complete file with no placeholders. Accompany the code with a brief explanation of your design choices.\n\n## Output contract\n\nFirst, write a brief explanation of your design choices — plain prose, no code fences.\n\nThen emit exactly one fenced code block per file, and no other text between or after the blocks:\n- The FIRST line of every block is that file's marker line:\n  - TypeScript or JavaScript: `// FILE: <path>`\n  - Python: `# FILE: <path>`\n- A single-file web app is one file named `index.html`, so its marker line is `// FILE: index.html`.\n- Everything after the marker line is that file complete, from its first line to its last — no diffs, no omissions, no placeholders.\n- Tag each fence with the file's language, for example ```html, ```typescript, ```python."
+  },
+  "provenance": {
+    "model": "z-ai/glm-5.3",
+    "model_label": "GLM 5.3 (Z.ai)",
+    "harness": "openrouter-chat-completions",
+    "harness_version": "openrouter-chat-2026-09-22",
+    "temperature": 0.3,
+    "generated_at": "2026-09-22T14:25:42.140Z",
+    "source": "generated"
+  },
+  "license": {
+    "spdx": "MIT",
+    "redistribution": "demo-eligible"
+  },
+  "contamination": {
+    "viral": false
+  },
+  "generation_failed": true
+}

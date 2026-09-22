@@ -1,0 +1,35 @@
+{
+  "id": "d3-log-p95--moonshotai-kimi-k3",
+  "tier": "demo",
+  "task": {
+    "id": "d3-log-p95",
+    "kind": "utility",
+    "brief": "Write a Python CLI `p95paths`: reads an access-log CSV with columns timestamp,path,latency_ms and prints the top-N paths by 95th-percentile latency (default N=10), highest first, as `path  p95_ms  count`. Use argparse for --top and the input file (stdin when omitted). Malformed rows are skipped with a warning count on stderr; an empty or header-only input prints nothing and exits 0. Deliver a complete, runnable script plus focused tests covering the percentile math and malformed-row handling. Accompany the code with a brief explanation of your design choices.",
+    "language": "python",
+    "tests_expected": true
+  },
+  "artifact": {
+    "form": "single-file",
+    "files": []
+  },
+  "context": {
+    "prompt": "Write a Python CLI `p95paths`: reads an access-log CSV with columns timestamp,path,latency_ms and prints the top-N paths by 95th-percentile latency (default N=10), highest first, as `path  p95_ms  count`. Use argparse for --top and the input file (stdin when omitted). Malformed rows are skipped with a warning count on stderr; an empty or header-only input prints nothing and exits 0. Deliver a complete, runnable script plus focused tests covering the percentile math and malformed-row handling. Accompany the code with a brief explanation of your design choices.\n\n## Output contract\n\nFirst, write a brief explanation of your design choices — plain prose, no code fences.\n\nThen emit exactly one fenced code block per file, and no other text between or after the blocks:\n- The FIRST line of every block is that file's marker line:\n  - TypeScript or JavaScript: `// FILE: <path>`\n  - Python: `# FILE: <path>`\n- A single-file web app is one file named `index.html`, so its marker line is `// FILE: index.html`.\n- Everything after the marker line is that file complete, from its first line to its last — no diffs, no omissions, no placeholders.\n- Tag each fence with the file's language, for example ```html, ```typescript, ```python."
+  },
+  "provenance": {
+    "model": "moonshotai/kimi-k3",
+    "model_label": "Kimi K3 (Moonshot)",
+    "harness": "openrouter-chat-completions",
+    "harness_version": "openrouter-chat-2026-09-22",
+    "temperature": 0.3,
+    "generated_at": "2026-09-22T14:29:31.584Z",
+    "source": "generated"
+  },
+  "license": {
+    "spdx": "MIT",
+    "redistribution": "demo-eligible"
+  },
+  "contamination": {
+    "viral": false
+  },
+  "generation_failed": true
+}
